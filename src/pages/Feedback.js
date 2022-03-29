@@ -5,7 +5,7 @@ import { base_url } from "../config";
 
 const Feedback = () => {
   const [feedbackList, setfeedbackList] = useState([]);
-  const [initLoading, setInitLoading] = useState(true);
+  const [initLoading, setInitLoading] = useState(false);
   const [confession, setConfession] = useState("");
   const [subLoading, setSubLoading] = useState(false);
   const [confessionError, setConfessionError] = useState("");
@@ -27,18 +27,18 @@ const Feedback = () => {
     setDimensions({ width: window.innerWidth, height: window.innerHeight });
   };
 
-  const getFeedbackList = () => {
-    setInitLoading(true);
-    axios({
-      method: "get",
-      url: base_url + "confessions",
-    })
-      .then((res) => {
-        if (res.data) setfeedbackList(res.data.reverse());
-      })
-      .catch((err) => console.log("ajsghdasd", err))
-      .finally(() => setInitLoading(false));
-  };
+  // const getFeedbackList = () => {
+  //   setInitLoading(true);
+  //   axios({
+  //     method: "get",
+  //     url: base_url + "confessions",
+  //   })
+  //     .then((res) => {
+  //       if (res.data) setfeedbackList(res.data.reverse());
+  //     })
+  //     .catch((err) => console.log("ajsghdasd", err))
+  //     .finally(() => setInitLoading(false));
+  // };
 
   const addFeedback = () => {
     if (!subLoading && confession) {
@@ -55,7 +55,7 @@ const Feedback = () => {
           if (res.data) {
             setOpenModal(false);
             setConfession("");
-            getFeedbackList();
+            // getFeedbackList();
           }
         })
         .catch((err) => console.log("ajsghdasd", err))
@@ -69,7 +69,7 @@ const Feedback = () => {
   };
 
   useEffect(() => {
-    getFeedbackList();
+    // getFeedbackList();
   }, []);
 
   const customStyles = {
@@ -137,7 +137,7 @@ const Feedback = () => {
             >
               <p style={{ fontWeight: "bold" }}>+ Add Note</p>
             </div>
-            {feedbackList.map((item) => (
+            {/* {feedbackList.map((item) => (
               <div
                 style={{
                   width: "19%",
@@ -159,7 +159,7 @@ const Feedback = () => {
                   {item.confession}
                 </p>
               </div>
-            ))}
+            ))} */}
           </>
         )}
       </div>
