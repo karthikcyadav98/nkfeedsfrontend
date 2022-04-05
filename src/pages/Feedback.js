@@ -123,7 +123,7 @@ const Feedback = () => {
             <div
               onClick={() => setOpenModal(true)}
               style={{
-                width: dimensions.width > 1160 ? "23%" : "25%",
+                width: 250,
                 minWidth: "20%",
                 minHeight: 250,
                 backgroundColor: "#fee4c5",
@@ -174,13 +174,19 @@ const Feedback = () => {
           autoFocus={true}
           value={confession}
           onChange={(e) => setConfession(e.target.value)}
-          style={{ height: 200, width: 400, maxHeight: 300, padding: 10 }}
+          style={{
+            height: 200,
+            width: dimensions.width > 600 ? 400 : 250,
+            maxHeight: 300,
+            padding: 10,
+          }}
         />
         <p style={{ margin: 0, color: "red" }}>{confessionError}</p>
         <br></br>
         <div
           style={{
             display: "flex",
+            flexDirection: dimensions.width > 600 ? "row" : "column",
             justifyContent: "center",
             alignItems: "center",
           }}

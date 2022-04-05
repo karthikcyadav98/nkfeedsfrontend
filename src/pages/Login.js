@@ -15,7 +15,7 @@ const Login = () => {
       method: "post",
       url: base_url + "login",
       data: {
-        email: email,
+        email: email.toLowerCase(),
       },
     })
       .then((res) => {
